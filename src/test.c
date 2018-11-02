@@ -69,7 +69,7 @@ int bcdhex_to_aschex(char bcdhex[],int len,char aschex[])
     return(len*2);
 }
 
-
+#if 1
 int main(int argc,char **argv)
 {
     if(argc<2)
@@ -97,7 +97,40 @@ int main(int argc,char **argv)
     printf("key::%s\n",combinedKey);
     return 0;
 }
+#endif
 
+#if 0
+int main(int argc,char **argv)
+{
+    if(argc<2)
+    {
+        printf("usage with key\n");
+        return -1;
+    }
+    char keyHex[128]={0};
+    strcpy(keyHex,argv[1]);
+    int n=5;
+    int t=3;
+    char key[64]={0};
+    char sharekey[10][8192*2]={0};
+    int keylen = 0;
+    keylen = aschex_to_bcdhex(keyHex,strlen(keyHex),(char*)key);
+    //keylen = strlen(keyHex);
+    GenerateShareKey((char*)key,keylen,n,t,sharekey);
+    int i = 0;
+
+    for(i=0;i<n;i++)
+    {
+        printf("%s\n",sharekey[i]);
+    }
+    char combinedKey[64]={0};
+	char combinedKeyHex[64]={0};
+    keylen = CombineKey(sharekey,t,combinedKey);
+	bcdhex_to_aschex(combinedKey,keylen,combinedKeyHex);
+    printf("key::%s\n",combinedKeyHex);
+    return 0;
+}
+#endif
 
 /*
 output: 
