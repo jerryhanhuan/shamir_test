@@ -84,7 +84,6 @@ int main(int argc,char **argv)
     char key[64]={0};
     char sharekey[10][8192*2]={0};
     int keylen = 0;
-   // int keylen = aschex_to_bcdhex(keyHex,strlen(keyHex),(char*)key);
     keylen = strlen(keyHex);
     GenerateShareKey(keyHex,keylen,n,t,sharekey);
     int i = 0;
@@ -100,3 +99,14 @@ int main(int argc,char **argv)
 }
 
 
+/*
+output: 
+./shamir_test 12345678
+0103AA5D0D82692A9A2260
+0203AA13CECD74B8520113
+0303AA54731355DE5FD552
+0403AA1FFE560C9CC19C1C
+0503AA756D959AF3775772
+key::12345678
+
+*/
