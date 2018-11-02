@@ -82,7 +82,7 @@ int main(int argc,char **argv)
     int n=5;
     int t=3;
     char key[64]={0};
-    char sharekey[10][8192]={0};
+    char sharekey[10][8192*2]={0};
     int keylen = 0;
    // int keylen = aschex_to_bcdhex(keyHex,strlen(keyHex),(char*)key);
     keylen = strlen(keyHex);
