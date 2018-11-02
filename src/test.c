@@ -72,7 +72,7 @@ int bcdhex_to_aschex(char bcdhex[],int len,char aschex[])
 
 int main(int argc,char **argv)
 {
-    if(argc<4)
+    if(argc<2)
     {
         printf("usage with key\n");
         return -1;
@@ -82,7 +82,7 @@ int main(int argc,char **argv)
     int n=5;
     int t=3;
     char key[64]={0};
-    char sharekey[5][1024]={0};
+    char sharekey[10][8192]={0};
     int keylen = 0;
    // int keylen = aschex_to_bcdhex(keyHex,strlen(keyHex),(char*)key);
     keylen = strlen(keyHex);
